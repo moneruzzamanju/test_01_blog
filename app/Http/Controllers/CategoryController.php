@@ -68,7 +68,15 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+// Option-01
+//        $data['category']= $category;
+//        return view('backend.category.show',$data);
+
+        // Option-02
+//        return view('backend.category.show',['category'=>$category]);
+
+        // Option-03
+        return view('backend.category.show',compact('category'));
     }
 
     /**
