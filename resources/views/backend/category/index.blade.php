@@ -23,6 +23,7 @@
                            <td>{{ $category->description }}</td>
                            <td>
                                <a class="btn btn-info btn-sm" href="{{ route('categories.show',$category->id)}}">Show Details</a>
+                               <a class="btn btn-info btn-sm" href="{{ route('categories.edit',$category->id)}}">Edit</a>
                            </td>
                        </tr>
                    @endforeach

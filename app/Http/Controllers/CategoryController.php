@@ -87,7 +87,15 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        // Option-01
+    //    $data['category']= $category;
+    //    return view('backend.category.edit',$data);
+
+        // Option-02
+    //    return view('backend.category.edit',['category'=>$category]);
+
+        // Option-03
+        return view('backend.category.edit',compact('category'));
     }
 
     /**
