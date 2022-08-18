@@ -51,6 +51,10 @@ class CategoryController extends Controller
 //        $data['name'] = $request->name;
 //        $data['description'] = $request->description;
 
+    $request->validate([
+        'name' => 'required|max:255',
+        'description' => 'required',
+    ]);
 
         Category::create([
             'name'=>$request->name,
@@ -107,7 +111,25 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        //        dd($request->all());
+
+        // Option-01
+       $data['name'] = $request->name;
+       $data['description'] = $request->description;
+       $category->update($data);
+       return redirect()->route('categories.index');
+       
+       // Option-02
+        // Category::where('id',$category->id)->update([
+        //     'name'=>$request->name,
+        //     'description'=>$request->description,
+        // ]);
+        // return redirect()->route('categories.index');
+
+        // Option-03
+    //    $category->update($request->all());
+    //    return redirect()->route('categories.index');
+
     }
 
     /**
@@ -118,6 +140,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('categories.index');
     }
 }
