@@ -4,7 +4,7 @@
    @section('content')
        <div class="row">
 
-           <div class="col-md-6">
+           <div class="col-md-9">
                <a class="btn btn-info" href="{{ route('categories.create') }}">Create Categories</a>
 
                <h1>All Category</h1>

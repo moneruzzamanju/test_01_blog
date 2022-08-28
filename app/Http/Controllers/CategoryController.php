@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryFormRequest;
+use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -45,19 +47,20 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryFormRequest $request)
     {
 //        dd($request->all());
 //        $data['name'] = $request->name;
 //        $data['description'] = $request->description;
 
-    $request->validate([
-        'name' => 'required|max:255',
-        'description' => 'required',
-    ],[
-        'name.required'=> "Name must be filled up.",
-        'description.required'=>" Description field must be required."
-    ]);
+        $request->validated();
+    // $request->validate([
+    //     'name' => 'required|max:255',
+    //     'description' => 'required',
+    // ],[
+    //     'name.required'=> "Name must be filled up.",
+    //     'description.required'=>" Description field must be required."
+    // ]);
 
         Category::create([
             'name'=>$request->name,
@@ -112,10 +115,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryFormRequest $request, Category $category)
     {
         //        dd($request->all());
 
+            $request->validated();
         // Option-01
        $data['name'] = $request->name;
        $data['description'] = $request->description;
