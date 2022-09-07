@@ -6,6 +6,29 @@
 
            <div class="col-md-9">
                <a class="btn btn-info" href="{{ route('categories.create') }}">Create Categories</a>
+                {{-- Option-01 --}}
+               {{-- @if (session('success'))
+               <div class="alert alert-success">
+                   {{ session('success') }}
+               </div>
+           @endif --}}
+
+
+                {{-- Option-02 --}}
+               {{-- @if (session()->has('success'))
+               <div class="alert alert-success">
+                   {{ session()->get('success') }}
+               </div>
+           @endif --}}
+
+                {{-- Option-03 --}}
+               @if (Session::has('success'))
+               <div class="alert alert-success" id="alert">
+                   {{ Session::get('success') }}
+               </div>
+           @endif
+
+
 
                <h1>All Category</h1>
                <table class="table table-bordered table-hover table-striped">
